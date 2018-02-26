@@ -83,14 +83,13 @@ script:
     - cd ${SRC_DIR};
     - python -c "import sys; print(sys.version, '\n', sys.prefix)"
     - if [ "${TEST_UNIT}" == "1" ]; then
-        pytest .;
+        invoke test --unit;
       fi;
     - if [ "${TEST_DOCS}" == "1" ]; then
-        python -c 'import flexx.ui';
-        sphinx-build docs docs/_build;
+        invoke docs --build;
       fi;
     - if [ "${TEST_STYLE}" == "1" ]; then
-        flake8 .;
+        invoke test --style;
         fi;
     - if [ "${TEST_STYLE}" == "1" ]; then
         echo "Size difference ${SIZE_DIFF} kB";

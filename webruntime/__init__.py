@@ -34,7 +34,7 @@ from collections import OrderedDict
 logger = logging.getLogger(__name__)
 del logging
 
-from ._config import config
+from ._config import config  # noqa
 from ._manage import RUNTIME_DIR, TEMP_APP_DIR  # noqa
 from ._common import BaseRuntime, DesktopRuntime  # noqa
 from ._firefox import FirefoxRuntime

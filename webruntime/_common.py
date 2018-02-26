@@ -559,7 +559,7 @@ def iconize(icon):
     # Get default icon?
     if icon is None:
         icon = Icon()
-        icon.from_bytes('.ico',  default_icon)
+        icon.from_bytes('.ico', default_icon)
     
     if isinstance(icon, Icon):
         pass

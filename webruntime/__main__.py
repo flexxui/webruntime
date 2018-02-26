@@ -10,7 +10,6 @@
 """
 
 import sys
-import subprocess
 
 import webruntime
 
