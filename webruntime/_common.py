@@ -51,10 +51,10 @@ import threading
 import subprocess
 
 from . import logger
-from ..util.icon import Icon
-
+from .util.icon import Icon
 from ._manage import RUNTIME_DIR
 from ._manage import init_dirs, clean_dirs, lock_runtime_dir, versionstring
+from ._defaulticon import default_icon
 
 
 INFO_PLIST = """
@@ -557,17 +557,19 @@ def iconize(icon):
     
     # Get default icon?
     if icon is None:
-        icon = os.path.join(os.path.dirname(THIS_DIR), 'resources', 'flexx.ico')
+        icon = Icon()
+        icon.from_bytes('.ico',  default_icon)
     
     if isinstance(icon, Icon):
         pass
     elif isinstance(icon, str):
         if icon.startswith('_data/shared'):
             # Icon as an asset in Flexx' asset store
-            from ..app import assets  # noqa
-            bb = assets.get_data(icon.split('/', 2)[-1])
-            icon = Icon()
-            icon.from_bytes('.ico', bb)
+            if 'flexx' in sys.modules:
+                from flexx.app import assets  # noqa
+                bb = assets.get_data(icon.split('/', 2)[-1])
+                icon = Icon()
+                icon.from_bytes('.ico', bb)
         else:
             # Filename, url, base64 string - handled by Icon class
             icon = Icon(icon)

@@ -25,7 +25,7 @@ import sys
 import json
 import tempfile
 
-from .. import config
+from . import config
 from ._common import DesktopRuntime
 from ._manage import create_temp_app_dir
 from ._manage import open_arch, extract_arch, versionstring

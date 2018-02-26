@@ -14,7 +14,7 @@ import os
 import sys
 import subprocess
 
-from .. import config
+from . import config
 from ._common import DesktopRuntime, find_osx_exe
 
 

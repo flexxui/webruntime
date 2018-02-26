@@ -1,7 +1,32 @@
-flexx.webruntime
-----------------
+Webruntime
+----------
 
-The purpose of the webruntime subpackage is to provide a means to launch
-an app, either in a browser, or in a runtime that feels like a desktop
-application. There is support for multiple web runtimes, such as XUL (Firefox)
-and NW.js.
+The webruntime module can be used to launch applications based on
+HTML/JS/CSS. This can be a browser or a runtime that looks like a
+desktop app, such as XUL (based on Firefox) or NW.js.
+
+
+Installation
+------------
+
+Webrunbtime is pure Python and requires Python 3.4+.
+It's only dependency is [dialite](https://github.com/flexxui/dialite).
+
+* ``pip install webruntime``
+
+
+Example
+-------
+
+```py
+    >>> from flexx.webruntime import launch
+    >>> rt = launch('http://xkcd.com', 'app')
+    ...
+    >>> rt.close()
+```
+
+License
+-------
+
+The code of Webruntime is distributed under the terms of
+the liberal 2-clause BSD license. See LICENSE for details.

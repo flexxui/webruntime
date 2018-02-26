@@ -20,8 +20,7 @@ import time
 import shutil
 import subprocess
 
-from .. import config
-from . import logger
+from . import logger, config
 from ._common import DesktopRuntime
 from ._manage import create_temp_app_dir
 

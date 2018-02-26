@@ -1,7 +1,7 @@
 """
-The webruntime module can be used to launch a runtime for applications
-based on HTML/JS/CSS. This can be a browser or something that looks like
-a desktop app.
+The webruntime module can be used to launch applications based on
+HTML/JS/CSS. This can be a browser or a runtime that looks like a
+desktop app, such as XUL (based on Firefox) or NW.js.
 
 Example:
 
@@ -24,6 +24,9 @@ Memory considerations
 
 """
 
+__version__ = '0.5.0'
+
+
 import sys
 import logging
 import traceback
@@ -31,9 +34,7 @@ from collections import OrderedDict
 logger = logging.getLogger(__name__)
 del logging
 
-from .. import config
-from .. import dialite
-
+from ._config import config
 from ._manage import RUNTIME_DIR, TEMP_APP_DIR  # noqa
 from ._common import BaseRuntime, DesktopRuntime  # noqa
 from ._firefox import FirefoxRuntime
@@ -43,6 +44,8 @@ from ._qt import PyQtRuntime
 from ._chrome import ChromeRuntime, GoogleChromeRuntime, ChromiumRuntime
 from ._ms import IERuntime, EdgeRuntime
 from ._selenium import SeleniumRuntime
+
+import dialite
 
 
 # Definition of all runtime names and their order
@@ -89,9 +92,8 @@ def launch(url, runtime=None, **kwargs):
         runtime (str) : The runtime(s) to use. E.g. 'app' will open in a
             desktop-app-like runtime, 'browser' in a browser runtime. One can
             target specific runtimes, e.g. 'nw-app' or 'edge-browser', or
-            a selection, e.g. 'chrome-browser or firefox-browser'. If not given
-            the value of ``flexx.config.webruntime`` is used, which defaults to
-            ``'app or browser'``.
+            a selection, e.g. 'chrome-browser or firefox-browser'. Default
+            is ``'app or browser'``.
             See below for more information on available runtimes.
         kwargs: addition arguments specific to the runtime. See the
             docs of the runtime classes.
@@ -136,8 +138,6 @@ def launch(url, runtime=None, **kwargs):
         logger.warn('Runtime name %s is deprecated, use %s instead.' %
                     (runtime, _aliases_compat[runtime]))
         runtime = _aliases_compat[runtime]
-    if not runtime or '!' in config.webruntime:
-        runtime = config.webruntime.strip('!')
     if not runtime:
         runtime = 'app or browser'
     given_runtime = runtime
