@@ -31,12 +31,12 @@ def get_version_and_doc(filename):
             elif docStatus == 1:
                 docStatus = 2
         if docStatus == 1:
-            NS['__doc__'] += line
+            NS['__doc__'] += line.rstrip() + '\n'
     if not NS['__version__']:
         raise RuntimeError('Could not find __version__')
     return NS['__version__'], NS['__doc__']
 
-
+    
 def package_tree(pkgroot):
     subdirs = [os.path.relpath(i[0], THIS_DIR).replace(os.path.sep, '.')
                for i in os.walk(os.path.join(THIS_DIR, pkgroot))
