@@ -1,5 +1,12 @@
 """
-Webruntime CLI.
+.. code-block:: none
+
+    Webruntime CLI
+    
+    Usage:
+      webruntime url runtime  launch the url in the given runtime
+      webruntime --help       show this help text
+      webruntime --version    show webruntime version number
 """
 
 import sys
@@ -9,22 +16,16 @@ import webruntime
 
 
 def help():
-    lines = ['webruntime [options] url runtime',
-             '',
-             '  -h          - show help text',
-             '  --version   - show version number'
-             ]
-    print('\n'.join(lines))
-
+    print(__doc__.split('.. code-block:: none')[-1].lstrip().replace('    ', ''))
 
 
 def main():
     if len(sys.argv) == 1:
         help()
     elif len(sys.argv) == 2:
-        if sys.argv[1] == '-h':
+        if sys.argv[1] in ('-h', '--help'):
             help()
-        elif sys.argv[1] == '--version':
+        elif sys.argv[1] in ('--version', 'version'):
             print(webruntime.__version__)
         else:
             sys.exit('Invalid use of webruntime CLI.')
