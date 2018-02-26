@@ -8,12 +8,14 @@ Introduction
 .. automodule:: webruntime
 
 
-Reference
----------
+The only function you need
+--------------------------
 
 .. autofunction:: webruntime.launch
 
-----
+
+Details for each runtime
+------------------------
 
 .. autoclass:: webruntime.BaseRuntime
   :members:
