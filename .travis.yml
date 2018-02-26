@@ -1,4 +1,4 @@
-# Travis CI configuration file for Flexx
+# Travis CI configuration file for webruntime
 # Validate this at http://lint.travis-ci.org/
 
 language: python
@@ -57,6 +57,7 @@ before_install:
 # Install dependencies
 install:
     - cd ${SRC_DIR}
+    - pip install dialite
     - if [ "${TEST_UNIT}" == "1" ]; then
         pip install pytest-cov;
         pip install selenium;
