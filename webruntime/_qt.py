@@ -11,7 +11,7 @@ from ._manage import create_temp_app_dir
 
 # Note that this runtime could allow us a very high degree of control
 # by e.g. passing commands through stdin. However, Qt webkit cannot
-# render Flexx ui apps.
+# render Flexx's ui apps.
 
 CODE_TO_RUN = """
 import sys
@@ -76,8 +76,8 @@ class PyQtRuntime(DesktopRuntime):
     process (the same version as the current), and uses PyQt4, PyQt5 or PySide
     to display the page.
     
-    This runtime is not suited for hosting apps created with flexx.ui; it is
-    included for completeness but should generally be avoided.
+    This runtime is not suited for hosting apps created with e.g. flexx.ui;
+    it is included for completeness but should generally be avoided.
     """
     
     def _get_name(self):

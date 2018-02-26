@@ -36,7 +36,7 @@ Name={name}
 Version={version}
 BuildID={buildid}
 ID={id}
-Profile=flexx_xul_stub_profile
+Profile=webruntime_xul_stub_profile
 
 [Gecko]
 MinVersion=1.8
@@ -51,7 +51,7 @@ MAIN_XUL = """
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     id="{windowid}"
     title="{title}"
-    windowtype="flexxui:main"
+    windowtype="webruntime:main"
     width="640"
     height="480"
     sizemode="{sizemode}"
@@ -285,7 +285,7 @@ class FirefoxRuntime(DesktopRuntime):
     def _check_compat(self):
         qts = 'PySide', 'PyQt4', 'PyQt5'
         if any([name+'.QtCore' in sys.modules for name in qts]):
-            logger.warn("Using Flexx' Firefox runtime and Qt (PySide/PyQt4/PyQt5) "
+            logger.warn("Using the Firefox web runtime and Qt (PySide/PyQt4/PyQt5) "
                         "together may cause problems.")
 
     def _create_xul_app(self, path, id, url, windowfeatures):
@@ -295,11 +295,11 @@ class FirefoxRuntime(DesktopRuntime):
         modemap = {'kiosk': 'fullscreen'}
         
         # Dict with all values that are injected in the file templates
-        D = dict(vendor='Flexx',
-                 name='flexx_ui_app',
+        D = dict(vendor='Webruntime',
+                 name='webruntime_ui_app',
                  version='1.0',
                  buildid='1',
-                 id='some.app@flexx.io',
+                 id='some.app@webruntime.io',
                  windowid='xx',
                  title=self._title,
                  url=url,
@@ -311,9 +311,9 @@ class FirefoxRuntime(DesktopRuntime):
         # multiple runtimes (as we do in flexx.app tests). Note that we've had
         # problems with the profile dirs being spammed (NW did, now fixed).
         # Also see "Profile=" in APPLICATION_INI above.
-        D['name'] = 'flexx_stub_xul_profile_' + id
+        D['name'] = 'webruntime_stub_xul_profile_' + id
         D['windowid'] = 'W' + id
-        D['id'] = 'app_' + id + '@flexx.io'
+        D['id'] = 'app_' + id + '@webruntime.io'
         
         # Fill in arguments in file contents
         manifest_link = 'manifest chrome/chrome.manifest'

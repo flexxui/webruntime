@@ -4,13 +4,13 @@ import time
 import tempfile
 import subprocess
 
-from flexx.util import icon
+from webruntime.util import icon
 
-from flexx.util.testing import run_tests_if_main, raises, skipif
+from webruntime.util.testing import run_tests_if_main, raises, skipif
 
-from flexx.webruntime import BaseRuntime
-from flexx.webruntime import launch
-from flexx import webruntime
+from webruntime import BaseRuntime
+from webruntime import launch
+import webruntime
 
 
 URL = None
@@ -30,7 +30,7 @@ HTML = """
 
 def setup_module():
     global URL, FILE
-    fname = os.path.join(tempfile.gettempdir(), 'flexx_testpage.html')
+    fname = os.path.join(tempfile.gettempdir(), 'webruntime_testpage.html')
     with open(fname, 'wb') as f:
         f.write(HTML.encode())
     URL = 'file://' + fname
@@ -63,7 +63,7 @@ def test_iconize():
     icn = webruntime._common.iconize(None)
     assert isinstance(icn, icon.Icon)
 
-    fname = os.path.join(tempfile.gettempdir(), 'flexx_testicon.ico')
+    fname = os.path.join(tempfile.gettempdir(), 'webruntime_testicon.ico')
     icn.write(fname)
 
     # Load from file
@@ -132,7 +132,7 @@ def test_selenium():
 
 def test_unknown():
     # Suppress dialog temporarily
-    from flexx import dialite
+    import dialite
     with dialite.NoDialogs():
         raises(ValueError, launch, URL, 'foo')
 

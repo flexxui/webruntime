@@ -1,10 +1,10 @@
-from flexx.util.testing import raises, run_tests_if_main
+from webruntime.util.testing import raises, run_tests_if_main
 
 import os
 import sys
 import tempfile
 
-from flexx.util.config import Config
+from webruntime.util.config import Config
 
 
 SAMPLE1 = """
@@ -128,16 +128,16 @@ def test_option_spec_fail():
 def test_read_file():
     
     # Prepare config files
-    filename1 = os.path.join(tempfile.gettempdir(), 'flexx_config_test1.cfg')
+    filename1 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test1.cfg')
     with open(filename1, 'wb') as f:
         f.write(SAMPLE1.encode())
-    filename2 = os.path.join(tempfile.gettempdir(), 'flexx_config_test2.cfg')
+    filename2 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test2.cfg')
     with open(filename2, 'wb') as f:
         f.write(SAMPLE2.encode())
-    filename3 = os.path.join(tempfile.gettempdir(), 'flexx_config_test3.cfg')
+    filename3 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test3.cfg')
     with open(filename3, 'wb') as f:
         f.write(SAMPLE3.encode())
-    filename4 = os.path.join(tempfile.gettempdir(), 'flexx_config_test4.cfg')
+    filename4 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test4.cfg')
     with open(filename4, 'wb') as f:
         f.write(b'\x00\xff')
     
@@ -226,10 +226,10 @@ def test_read_file():
 
 def test_read_file_later():
     
-    filename1 = os.path.join(tempfile.gettempdir(), 'flexx_config_test1.cfg')
+    filename1 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test1.cfg')
     with open(filename1, 'wb') as f:
         f.write(SAMPLE1.encode())
-    filename2 = os.path.join(tempfile.gettempdir(), 'flexx_config_test2.cfg')
+    filename2 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test2.cfg')
     with open(filename2, 'wb') as f:
         f.write(SAMPLE2.encode())
     
@@ -281,7 +281,7 @@ def test_access():
 def test_repr_and_str():
     
     # Prepare file
-    filename1 = os.path.join(tempfile.gettempdir(), 'flexx_config_test1.cfg')
+    filename1 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test1.cfg')
     with open(filename1, 'wb') as f:
         f.write(SAMPLE1.encode())
     
@@ -394,10 +394,10 @@ def test_set_from_env():
 
 def test_order():
     
-    filename1 = os.path.join(tempfile.gettempdir(), 'flexx_config_test1.cfg')
+    filename1 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test1.cfg')
     with open(filename1, 'wb') as f:
         f.write(SAMPLE1.encode())
-    filename2 = os.path.join(tempfile.gettempdir(), 'flexx_config_test2.cfg')
+    filename2 = os.path.join(tempfile.gettempdir(), 'webruntime_config_test2.cfg')
     with open(filename2, 'wb') as f:
         f.write(SAMPLE2.encode())
     

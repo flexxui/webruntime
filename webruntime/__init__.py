@@ -7,7 +7,7 @@ Example:
 
 .. code-block:: python
     
-    >>> from flexx.webruntime import launch
+    >>> from webruntime import launch
     >>> rt = launch('http://xkcd.com', 'app')
     ...
     >>> rt.close()
@@ -195,7 +195,7 @@ def launch(url, runtime=None, **kwargs):
         messages.extend(errors)
     messages = '\n\n'.join(messages)
     
-    dialite.fail('Flexx - No suitable runtime available', messages)
+    dialite.fail('Webruntime - No suitable runtime available', messages)
     
     raise ValueError('Could not detect a suitable backend among %r.' % runtimes)
 
@@ -291,14 +291,14 @@ def _expand_runtime_name(runtime):
 def _print_autoclasses():  # pragma: no cover
     """ Run this code to get ``.. autoclass::`` definitions to put in the docs.
     """
-    from flexx.webruntime import _runtimes
+    from webruntime import _runtimes
     lines = []
     seen = set()
     for name in ('BaseRuntime', 'DesktopRuntime'):
-        lines.append('.. autoclass:: flexx.webruntime.%s\n  :members:' % name)
+        lines.append('.. autoclass:: webruntime.%s\n  :members:' % name)
     for name, Cls in _runtimes.items():
         if Cls in seen:
             continue
         seen.add(Cls)
-        lines.append('.. autoclass:: flexx.webruntime.%s\n  :members:' % Cls.__name__)
+        lines.append('.. autoclass:: webruntime.%s\n  :members:' % Cls.__name__)
     print('\n\n'.join(lines))

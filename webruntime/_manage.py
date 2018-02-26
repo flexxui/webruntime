@@ -74,7 +74,7 @@ def appdata_dir(appname=None, roaming=False, macAsLinux=False):
     return path
 
 
-APPDATA_DIR = appdata_dir('flexx')
+APPDATA_DIR = appdata_dir('webruntime')
 RUNTIME_DIR = op.join(APPDATA_DIR, 'webruntimes')
 TEMP_APP_DIR = op.join(APPDATA_DIR, 'temp_apps')
 DELETE_PREFIX = 'todelete~'

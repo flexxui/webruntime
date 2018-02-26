@@ -157,6 +157,6 @@ if sys.platform.startswith('win'):
 if __name__ == '__main__':
     im, shape = screenshot(5144, True)
     
-    from flexx.util import icon
+    from webruntime.util import icon
     png = icon.write_png(im, shape)
     open('C:\\Users\\Almar\\test.png', 'wb').write(png)

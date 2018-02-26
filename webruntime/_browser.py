@@ -19,8 +19,8 @@ BROWSER_MAP = {'chrome': ['google-chrome', 'chrome',
 class BrowserRuntime(BaseRuntime):
     """ Runtime based on the Python webbrowser module. This runtime is used
     to open a url in the system default browser, and to attempt to handle a
-    given browser name that is unknown to Flexx (maybe the webbrowser module
-    knows it).
+    given browser name that is unknown to the webruntime module (maybe
+    the webbrowser module knows it).
     """
     
     def __init__(self, type=None, **kwargs):

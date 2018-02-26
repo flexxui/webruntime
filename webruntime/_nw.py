@@ -33,11 +33,11 @@ from ._manage import open_arch, extract_arch, versionstring
 
 # http://docs.nwjs.io/en/latest/References/Manifest%20Format
 def get_manifest_template():
-    return {"name": "flexx_nw_app",
+    return {"name": "webruntime_nw_app",
             "main": "",
             "nodejs": False,
             # "single-instance": False,  # Deprecated; is always True
-            "description": "an app made with Flexx ui",
+            "description": "an app launched with webruntime",
             "version": "1.0",
             "keywords": [],
             
@@ -95,7 +95,7 @@ def fix_libudef(dest):
 
 class NWRuntime(DesktopRuntime):
     """ Desktop runtime based on NW.js (http://nwjs.io, formerly
-    node-webkit), which uses the Chromium engine. Flexx will install/update the
+    node-webkit), which uses the Chromium engine. We will install/update the
     runtime if it finds a suitable archive in a few common locations like
     the desktop, download dir and temp dir. That way, the end-user only
     has to download the archive to make this runtime work.
@@ -117,9 +117,9 @@ class NWRuntime(DesktopRuntime):
     
     def _get_install_instuctions(self):
         m = ('Download the NW.js archive for your platform from '
-             '"http://nwjs.io". Flexx will find the file if it is placed in '
-             'your home dir, desktop, downloads dir (where most browser save '
-             'it) or the default temp dir.')
+             '"http://nwjs.io". The webruntime library will find the file if '
+             'it is placed in your home dir, desktop, downloads dir (where '
+             'most browser save it) or the default temp dir.')
         return m
     
     def _get_exe_name(self, dir):
@@ -234,7 +234,7 @@ class NWRuntime(DesktopRuntime):
         # still created (at least on Windows). Fortunately. the name does not
         # have to be unique, perhaps because we define a custom profile dir.
         D = get_manifest_template()
-        D['name'] = 'flexx_stub_nw_profile'
+        D['name'] = 'webruntime_stub_nw_profile'
         D['description'] += ' (%s)' % id
         D['main'] = url
         D['window']['title'] = self._title

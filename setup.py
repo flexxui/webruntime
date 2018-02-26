@@ -99,7 +99,7 @@ setup(
     platforms='any',
     provides=[name],
     install_requires=[],
-    packages=package_tree(name) + package_tree(name_legacy),
+    packages=package_tree(name),
     package_dir={name: name},
     package_data={name: ['resources/*']},
     entry_points={'console_scripts': ['webruntime = webruntime.__main__:main'], },

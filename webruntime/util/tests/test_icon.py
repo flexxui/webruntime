@@ -5,10 +5,10 @@ Test icon module
 import os
 import sys
 import tempfile
-from flexx.util.testing import run_tests_if_main, raises, skip
+from webruntime.util.testing import run_tests_if_main, raises, skip
 
-#from flexx.util.png import write_png
-#from flexx.util.icon import Icon
+#from webruntime.util.png import write_png
+#from webruntime.util.icon import Icon
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from util.png import write_png
 from util.icon import Icon

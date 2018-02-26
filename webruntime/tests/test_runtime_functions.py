@@ -1,11 +1,11 @@
 """ Test some loose functions
 """
 
-from flexx.util.testing import run_tests_if_main, raises, skipif
+from webruntime.util.testing import run_tests_if_main, raises, skipif
 
 
-from flexx.webruntime._manage import versionstring
-from flexx.webruntime import _expand_runtime_name
+from webruntime._manage import versionstring
+from webruntime import _expand_runtime_name
 
 def test_versionstring():
     

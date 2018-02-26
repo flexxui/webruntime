@@ -8,8 +8,8 @@ import os
 import time
 import tempfile
 
-from flexx import webruntime
-from flexx.util.testing import run_tests_if_main, skip
+import webruntime
+from webruntime.util.testing import run_tests_if_main, skip
 
 userdir = os.path.expanduser('~')
 
@@ -30,7 +30,7 @@ def index():
 
 def notrailtester(runtime, n=4):
     
-    html_filename = os.path.join(tempfile.gettempdir(), 'flexx_empty_page.html')
+    html_filename = os.path.join(tempfile.gettempdir(), 'webruntime_empty_page.html')
     with open(html_filename, 'wb') as f:
         f.write('<html><body>test page</body></html>'.encode())
     

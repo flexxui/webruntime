@@ -5,9 +5,9 @@ Test png module
 import os
 import sys
 import tempfile
-from flexx.util.testing import run_tests_if_main, raises, skip
+from webruntime.util.testing import run_tests_if_main, raises, skip
 
-#from flexx.util.png import read_png, write_png
+#from webruntime.util.png import read_png, write_png
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from util.png import read_png, write_png
 

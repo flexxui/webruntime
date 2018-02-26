@@ -74,7 +74,7 @@ class ChromeRuntime(DesktopRuntime):
         if sys.platform.startswith('win'):
             os.mkdir(path)
             with open(op.join(path, 'stub.txt'), 'wb') as f:
-                f.write('Flexx uses the system Chrome'.encode())
+                f.write('Webruntime uses the system Chrome'.encode())
         else:
             # This makes a nice icon on OS X, but it still groups with Chrome!
             os.mkdir(path)

@@ -21,8 +21,9 @@ complex / error-prone. These updates are mostly for security reasons,
 which is generally less an issue for us because we only connect them
 to known sources which are on localhost for desktop apps anyway.
 
-Therefore, Flexx has a hardcoded minimal version for runtimes where this
-makes sense, which is configurable by the user in cases where its needed.
+Therefore, the webruntime module has a hardcoded minimal version for runtimes
+where this makes sense, which is configurable by the user in cases where its
+needed.
 
 For deskop runtimes we have the following important attributes:
 
@@ -276,7 +277,7 @@ class DesktopRuntime(BaseRuntime):
         self._icon = iconize(icon or None)
         assert isinstance(self._icon, Icon)
         
-        self._title = title or 'Flexx %s runtime' % self.get_name()
+        self._title = title or '%s webruntime' % self.get_name()
         assert isinstance(self._title, str)
         
         self._size = size or (640, 480)
