@@ -20,10 +20,13 @@ def index():
     filenames = set()
     for root, dirs, files in os.walk(userdir):
         for fname in dirs:
-            if 'temp' not in fname.lower():
-                # hacky exception for firefox, which seems to clean things up itself
-                filenames.add(os.path.join(root, fname))
+            # if 'temp' in fname.lower():
+            #     continue  # exception for FF, which seems to clean up itself
+            filenames.add(os.path.join(root, fname))
         for fname in files:
+            if len(fname) < 15:  # only simple names, not uids
+                if 'fontconfig' in root:
+                    continue  # CI
             filenames.add(os.path.join(root, fname))
     return filenames
 
@@ -71,4 +74,7 @@ def test_notrail_nw():
     notrailtester('nw-app')
 
 
-run_tests_if_main()
+if __name__ == '__main__':
+    test_notrail_firefox()
+    test_notrail_nw()
+    # run_tests_if_main()
