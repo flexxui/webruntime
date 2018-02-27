@@ -38,7 +38,8 @@ def notrailtester(runtime, n=4):
     x = webruntime.launch(html_filename, runtime)
     time.sleep(0.5)
     x.close()
-
+    time.sleep(0.5)
+    
     before = index()
     
     for i in range(n):
