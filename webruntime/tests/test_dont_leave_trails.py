@@ -31,43 +31,52 @@ def index():
     return filenames
 
 
+def run_once(html_filename, runtime):
+    x = webruntime.launch(html_filename, runtime)
+    time.sleep(1.5)
+    x.close()
+    time.sleep(0.5)
+
+
 def notrailtester(runtime, n=4):
     
     html_filename = os.path.join(tempfile.gettempdir(), 'webruntime_empty_page.html')
     with open(html_filename, 'wb') as f:
         f.write('<html><body>test page</body></html>'.encode())
     
-    # Give a chance for common stuff to init
-    x = webruntime.launch(html_filename, runtime)
-    time.sleep(1.5)
-    x.close()
-    time.sleep(0.5)
-    
-    before = index()
-    
     # Apparently, CI needs some more time for FF init its file system
     # It seems that even ~/Desktop is not there initially, which we use to
     # detect when we're good to go.
     desktop = os.path.normpath(os.path.expanduser('~/Desktop'))
-    etime = time.time() + 8  # dont get stuck
-    while time.time() < etime and desktop not in before:
-        time.sleep(0.2)
+    for iter in range(3):
+        run_once(html_filename, runtime)
         before = index()
+        if desktop in before:
+            break
+        
+        etime = time.time() + 5  # dont get stuck
+        while time.time() < etime and desktop not in before:
+            time.sleep(0.2)
+            before = index()
     
+    print('has desktop:', desktop in before, iter)
+    
+    # Get all current files in home dir
+    before = index()
+    
+    # Run an app a few times
     for i in range(n):
-        x = webruntime.launch(html_filename, runtime)
-        time.sleep(1.5)
-        x.close()
-        time.sleep(0.5)
+        run_once(html_filename, runtime)
     
+    # Get files that we have now
     after = index()
     
+    # Analyze
     extra_files = after.difference(before)
     extra_files2 = [f for f in extra_files
                     if not f.startswith((webruntime.TEMP_APP_DIR,
                                          webruntime.RUNTIME_DIR))]
     
-    print('has desktop:', desktop in before)
     print(extra_files2)
     assert len(extra_files2) < n
 
