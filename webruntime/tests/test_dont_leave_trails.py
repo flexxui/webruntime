@@ -39,7 +39,7 @@ def notrailtester(runtime, n=4):
     
     # Give a chance for common stuff to init
     x = webruntime.launch(html_filename, runtime)
-    time.sleep(0.5)
+    time.sleep(1.5)
     x.close()
     time.sleep(0.5)
     
@@ -49,7 +49,7 @@ def notrailtester(runtime, n=4):
     # It seems that even ~/Desktop is not there initially, which we use to
     # detect when we're good to go.
     desktop = os.path.normpath(os.path.expanduser('~/Desktop'))
-    etime = time.time() + 4  # dont get stuck
+    etime = time.time() + 8  # dont get stuck
     while time.time() < etime and desktop not in before:
         time.sleep(0.2)
         before = index()
