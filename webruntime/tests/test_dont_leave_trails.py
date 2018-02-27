@@ -37,8 +37,6 @@ def notrailtester(runtime, n=4):
     with open(html_filename, 'wb') as f:
         f.write('<html><body>test page</body></html>'.encode())
     
-    pre_before = index()
-    
     # Give a chance for common stuff to init
     x = webruntime.launch(html_filename, runtime)
     time.sleep(0.5)
@@ -46,6 +44,13 @@ def notrailtester(runtime, n=4):
     time.sleep(0.5)
     
     before = index()
+    
+    desktop = os.path.normpath(os.path.expanduser('~/Desktop'))
+    etime = time.time() + 3
+    while time.time() < etime and desktop not in before:
+        time.sleep(0.2)
+        before = index()
+    print('has desktop:', desktop in before)
     
     for i in range(n):
         x = webruntime.launch(html_filename, runtime)
