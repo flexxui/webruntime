@@ -22,11 +22,12 @@ Example
 -------
 
 ```py
-    >>> from flexx.webruntime import launch
+    >>> from webruntime import launch
     >>> rt = launch('http://xkcd.com', 'app')
     ...
     >>> rt.close()
 ```
+
 
 License
 -------
