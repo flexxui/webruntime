@@ -134,7 +134,7 @@ def get_pid_list():
     else:  # Posix
         cmd = ['ps', 'aux']  # Not "-u root -N" cause -N does not work on OS X
     
-    out = subprocess.check_output(cmd).decode()
+    out = subprocess.check_output(cmd).decode(errors='ignore')
     pids = []
     for line in out.splitlines():
         parts = [i.strip() for i in line.replace('\t', ' ').split(' ') if i]
