@@ -510,7 +510,7 @@ class StreamReader(threading.Thread):
             if not msg:
                 break  # Process dead
             if not isinstance(msg, str):
-                msg = msg.decode('utf-8', 'ignore')
+                msg = msg.decode(errors='ignore')
             msg = msg.rstrip()
             # Process the message
             msgs.append(msg)
@@ -541,8 +541,8 @@ def find_osx_exe(app_id):
     se.g. 'com.google.Chrome'.
     """
     try:
-        osx_search_arg = 'kMDItemCFBundleIdentifier==%s' % app_id
-        return subprocess.check_output(['mdfind', osx_search_arg]).rstrip().decode()
+        cmd = ['mdfind', 'kMDItemCFBundleIdentifier==%s' % app_id]
+        return subprocess.check_output(cmd).decode(errors='ignore').rstrip()
     except (OSError, subprocess.CalledProcessError):
         pass
 

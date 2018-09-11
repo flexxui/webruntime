@@ -56,7 +56,7 @@ class ChromeRuntime(DesktopRuntime):
             version = subprocess.check_output([exe, '--version'])
         
         # Clean up
-        parts = version.decode().strip().replace('=', ' ').split(' ')
+        parts = version.decode(errors='ignore').strip().replace('=', ' ').split(' ')
         for part in parts:
             if part and part[0].isnumeric():
                 return part

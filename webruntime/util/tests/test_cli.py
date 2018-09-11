@@ -7,7 +7,7 @@ from webruntime.util.testing import run_tests_if_main, raises
 
 def test_cli():
     cmd = [sys.executable, '-m', 'webruntime', '--version']
-    v = subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode().strip()
+    v = subprocess.check_output(cmd, stderr=subprocess.STDOUT).decode(errors='ignore').strip()
     assert v == webruntime.__version__
 
     
