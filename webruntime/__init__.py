@@ -62,7 +62,7 @@ _runtimes['browser'] = BrowserRuntime
 
 
 _aliases = {'app': 'firefox-app or nw-app',
-            'browser': ('chrome-browser or firefox-browser or edge-browser '
+            'browser': ('firefox-browser or chrome-browser or edge-browser '
                         'or default-browser'),
             'chrome-browser': 'googlechrome-browser or chromium-browser',
             'chrome-app': 'googlechrome-app or chromium-app',
