@@ -62,6 +62,8 @@ MAIN_XHTML = """
     <browser src="{url}"
              id="content"
              type="content"
+             remote="true"
+             remoteType="web"
              flex="1"
              disablehistory="true" />
 </window>
