@@ -43,7 +43,7 @@ MinVersion=1.8
 MaxVersion=200.*
 """
 
-MAIN_XUL = """
+MAIN_XHTML = """
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 
@@ -75,10 +75,10 @@ MAIN_JS = """
 
 PREFS_JS = """
 // This tells xulrunner what xul file to use
-pref("toolkit.defaultChromeURI", "chrome://{name}/content/main.xul");
+pref("toolkit.defaultChromeURI", "chrome://{name}/content/main.xhtml");
 
 // This line is needed to let window.open work
-pref("browser.chromeURL", "chrome://{name}/content/main.xul");
+pref("browser.chromeURL", "chrome://{name}/content/main.xhtml");
 
 // Set features - setting width, height, maximized, etc. here
 pref("toolkit.defaultChromeFeatures", "{windowfeatures}");
@@ -319,7 +319,7 @@ class FirefoxRuntime(DesktopRuntime):
         manifest_link = 'manifest chrome/chrome.manifest'
         manifest = 'content {name} content/'.format(**D)
         application_ini = APPLICATION_INI.format(**D)
-        main_xul = MAIN_XUL.format(**D)
+        main_xhtml = MAIN_XHTML.format(**D)
         main_js = MAIN_JS  # No format (also problematic due to braces)
         prefs_js = PREFS_JS.format(**D)
 
@@ -341,7 +341,7 @@ class FirefoxRuntime(DesktopRuntime):
                             ('application.ini', application_ini),
                             ('defaults/preferences/prefs.js', prefs_js),
                             ('chrome/content/main.js', main_js),
-                            ('chrome/content/main.xul', main_xul),
+                            ('chrome/content/main.xhtml', main_xhtml),
                             ]:
             with open(op.join(path, fname), 'wb') as f:
                 f.write(text.encode())
