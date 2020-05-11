@@ -386,10 +386,12 @@ class DesktopRuntime(BaseRuntime):
         # Define process name, so that our window is not grouped with
         # Firefox, NW.js or whatever, and has a more meaningful name in the
         # task manager. Using sys.executable also works well when frozen.
-        exe_name, ext = op.splitext(op.basename(sys.executable))
-        # todo: What kind of exe name? test with freezing on different OS's
-        exe_name = exe_name + '-ui' + ext
-        # exe_name = exe_name + ext
+        exe_name = op.basename(sys.executable)
+        if sys.platform.startswith("win"):
+            exe_name, ext = op.splitext(exe_name)
+            exe_name = exe_name + '-ui' + ext
+        else:
+            exe_name = exe_name + '-ui'
         
         assert runtime_exe.startswith(RUNTIME_DIR)
         
