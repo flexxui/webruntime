@@ -84,7 +84,7 @@ def test_read_wrong():
 
 def test_reading_from_url():
     
-    icon = Icon('https://assets-cdn.github.com/favicon.ico')
+    icon = Icon('https://raw.githubusercontent.com/pyzo/pyzo/master/pyzo/resources/appicons/pyzologo.ico')
     assert len(icon.image_sizes()) > 0
     
     # Write locally
