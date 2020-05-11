@@ -52,8 +52,6 @@ MAIN_XHTML = """
     id="{windowid}"
     title="{title}"
     windowtype="webruntime:main"
-    width="640"
-    height="480"
     sizemode="{sizemode}"
     >
     <script type="application/javascript"
