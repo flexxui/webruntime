@@ -351,6 +351,9 @@ class FirefoxRuntime(DesktopRuntime):
         icon_name = op.join(path, 'chrome/icons/default/' + D['windowid'])
         self._icon.write(icon_name + '.ico')
         self._icon.write(icon_name + '.png')
+        icon_name = op.join(path, 'chrome/icons/default/default')
+        self._icon.write(icon_name + '.ico')
+        self._icon.write(icon_name + '.png')
     
     def _copy_xul_runtime(self, dir1, dir2):
         """ Copy the firefox/xulrunner runtime to a new folder, in which
