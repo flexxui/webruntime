@@ -20,7 +20,7 @@ def lint(ctx):
 def test(ctx, unit='', style='', cover=False):
     """ run tests (unit, style)
     """
-    
+
     if not (unit or style or cover):
         sys.exit('Test task needs --unit, --style or --cover')
     if unit:
@@ -69,12 +69,12 @@ def show_coverage_term():
                    source=[NAME])  # should match testing/_coverage.py
     cov.load()
     cov.report()
-    
-    
+
+
 def show_coverage_html():
     import webbrowser
     from coverage import coverage
-    
+
     print('Generating HTML...')
     os.chdir(ROOT_DIR)
     cov = coverage(auto_data=False, branch=True, data_suffix=None,
@@ -97,11 +97,10 @@ def test_style(rel_path='.'):
         sys.exit('Cannot do style test: ' + str(err))
     # Prepare
     os.chdir(ROOT_DIR)
-    sys.argv[1:] = [NAME + '/' + rel_path]
     # Do test
     print('Running flake8 tests ...')
     app = Application()
-    app.run()
+    app.run([NAME + '/' + rel_path])
     # Report
     nerrors = app.result_count
     if nerrors:
