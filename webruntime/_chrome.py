@@ -137,29 +137,34 @@ class ChromeRuntime(DesktopRuntime):
             paths.append(r"~\Local Settings\Application Data\Google\Chrome")
             paths = [op.expanduser(p + '\\chrome.exe') for p in paths]
         elif sys.platform.startswith('linux'):
-            paths.append('/usr/bin/chromium'),
-            paths.append('/usr/bin/chromium-browser'), 
-            paths.append('/snap/bin/chromium)'
+            paths.append('/usr/bin/chromium')
+            paths.append('/usr/bin/chromium-browser')
+            paths.append('/snap/bin/chromium)')
             paths.append('/usr/bin/google-chrome')
             paths.append('/usr/bin/google-chrome-stable')
             paths.append('/usr/bin/google-chrome-beta')
             paths.append('/usr/bin/google-chrome-dev')
         elif sys.platform.startswith('darwin'):
-            
-            paths = [# mac os chrome path list
-            '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-            '/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary',
-            '/Applications/Chromium.app/Contents/MacOS/Chromium'
+            app_dirs = [
+                '~/Applications/Chrome',
+                '~/Applications/Google Chrome',
+                '/Applications/Chrome',
+                '/Applications/Google Chrome',
+                '/Applications/Google Chrome.app',
+                '/Applications/Chromium.app',
+                '/Applications/Google Chrome Canary.app',
+                find_osx_exe('com.google.Chrome')
             ]
-            app_dirs = ['~/Applications/Chrome', '~/Applications/Google Chrome',
-                        '/Applications/Chrome', '/Applications/Google Chrome',
-                        find_osx_exe('com.google.Chrome')]
             for dir in app_dirs:
                 if dir:
                     dir = op.expanduser(dir)
                     if op.isdir(dir):
                         paths.append(op.join(dir, 'Contents/MacOS/Chrome'))
                         paths.append(op.join(dir, 'Contents/MacOS/Google Chrome'))
+                        paths.append(op.join(dir, 'Contents/MacOS/Chromium'))
+                        paths.append(
+                            op.join(dir, 'Contents/MacOS/Google Chrome Canary')
+                        )
         
         # Try location until we find one that exists
         for path in paths:
