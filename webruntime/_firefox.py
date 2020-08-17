@@ -145,6 +145,7 @@ class FirefoxRuntime(DesktopRuntime):
                 paths.append(basepath + 'Mozilla Firefox\\firefox.exe')
                 paths.append(basepath + 'Mozilla\\Firefox\\firefox.exe')
                 paths.append(basepath + 'Firefox\\firefox.exe')
+                paths.append(basepath + 'Firefox Nightly\\firefox.exe')
         elif sys.platform.startswith('linux'):
             paths.append('/usr/lib/firefox/firefox')
             paths.append('/usr/lib64/firefox/firefox')
