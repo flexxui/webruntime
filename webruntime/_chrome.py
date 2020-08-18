@@ -134,6 +134,7 @@ class ChromeRuntime(DesktopRuntime):
             paths.append(r"C:\Program Files\Google\Chrome\Application")
             paths.append(r"C:\Program Files (x86)\Google\Chrome\Application")
             paths.append(r"~\AppData\Local\Google\Chrome\Application")
+            paths.append(r"~\AppData\Local\Google\Chrome SxS\Application")
             paths.append(r"~\Local Settings\Application Data\Google\Chrome")
             paths = [op.expanduser(p + '\\chrome.exe') for p in paths]
         elif sys.platform.startswith('linux'):
