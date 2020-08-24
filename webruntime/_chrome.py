@@ -121,7 +121,6 @@ class ChromeRuntime(DesktopRuntime):
         return self._get_google_chrome_exe() or self._get_chromium_exe()
     
     def _get_google_chrome_exe(self):
-        
         # Return user-specified version?
         # Note that its perfectly fine to specify a chromium exe here 
         if config.chrome_exe and self._get_version(config.chrome_exe):
