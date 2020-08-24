@@ -297,7 +297,8 @@ class DesktopRuntime(BaseRuntime):
     
     def _is_available(self):
         # cached, _ = self.get_cached_version()
-        cached = None  # -> we only claim to be available if the app is actually installed
+        # -> only claim to be available if the app is actually installed
+        cached = None
         system, _ = self.get_system_version()
         return bool(cached or system)
     
