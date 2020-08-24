@@ -296,7 +296,9 @@ class DesktopRuntime(BaseRuntime):
         super().__init__(**kwargs)
     
     def _is_available(self):
-        cached, _ = self.get_cached_version()
+        # cached, _ = self.get_cached_version()
+        # -> only claim to be available if the app is actually installed
+        cached = None
         system, _ = self.get_system_version()
         return bool(cached or system)
     
