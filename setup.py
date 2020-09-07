@@ -36,7 +36,7 @@ def get_version_and_doc(filename):
         raise RuntimeError('Could not find __version__')
     return NS['__version__'], NS['__doc__']
 
-    
+
 def package_tree(pkgroot):
     subdirs = [os.path.relpath(i[0], THIS_DIR).replace(os.path.sep, '.')
                for i in os.walk(os.path.join(THIS_DIR, pkgroot))
@@ -88,5 +88,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 )

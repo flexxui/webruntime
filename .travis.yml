@@ -59,7 +59,7 @@ before_install:
 # Install dependencies
 install:
     - cd ${SRC_DIR}
-    - pip install dialite invoke
+    - pip install -U dialite invoke
     - if [ "${TEST_UNIT}" == "1" ]; then
         pip install pytest-cov;
         pip install selenium;
