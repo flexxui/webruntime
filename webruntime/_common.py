@@ -93,9 +93,21 @@ class BaseRuntime:
         atexit.register(self.close)
         
         # Increase chance of closing runtime when Python is forced to stop
-        signal.signal(signal.SIGTERM, self.close)
-        signal.signal(signal.SIGINT, self.close)
-        
+        try:
+            signal.signal(signal.SIGTERM, self.close)
+        except ValueError as e:  # Cannot use signal.signal outside of main thread
+            if str(e) != 'signal only works in main thread':
+                raise
+            else:
+                pass  # Continue as it will still work on some browser (like Chrome)
+        try:
+            signal.signal(signal.SIGINT, self.close)
+        except ValueError as e:    # Cannot use signal.signal outside of main thread
+            if str(e) != 'signal only works in main thread':
+                raise
+            else:
+                pass  # Continue as it will still work on some browser (like Chrome)
+
         self._exe = None
         self._version = None
         self._proc = None
